@@ -1,1 +1,13 @@
-//
+//----solution of questions------
+
+
+#1. select sname,age from student;
+
+#2. select * from student where age>18;
+
+#3. select snum from student where snum in(select snum from enrolled where cname='Database Systems');
+
+#4.  select sname from student where snum in(select snum from enrolled where cname='Database Systems');
+
+#5. select fname from faculty where deptid=20;
+
