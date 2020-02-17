@@ -1,1 +1,49 @@
-//
+//solution of the lab4:
+
+
+
+1. select sname,age from student s,class c,enrolled e,faculty f where major='Finance' or
+(s.snum=e.snum and c.name=e.cname and c.fid=f.fid and f.fname='Linda Davis') order by age desc
+limit 1 ;
+
+
+2.select name from class where room='20 AVW' union select cname from enrolled group by cname
+having count(*)>4;
+
+3. SELECT F.fname FROM faculty F WHERE NOT EXISTS ( SELECT C.room FROM class C
+where C.room NOT IN (SELECT C1.room FROM class C1 WHERE C1.fid = F.fid ));
+
+4. select fname from faculty where fid IN(select fid from class group by fid having
+count(*)>=ALL(select count(*) from class group by fid ));
+
+5. select fname from faculty where fname NOT IN(select fname from faculty,class where
+class.fid=faculty.fid);
+
+6. select s.age,s.level from student s group by s.age ,s.level having s.level in(select s1.level from
+student s1 where s1.age=s.age group by s1.level,s1.age having count(*)>=ALL(select count(*)from
+student s2 where s1.age=s2.age group by s2.level,s2.age));
+
+7. select room,count(*) from class group by room;
+
+8. select distinct name from class,enrolled,student where room='R128' and
+student.snum=enrolled.snum and enrolled.cname=class.name;
+
+9. select distinct name, meets_at from class,enrolled,student where student.snum=enrolled.snum
+and enrolled.cname=class.name;
+
+10. select sname from student s,class c,enrolled e where s.snum=e.snum and c.name=e.cname and
+c.room='R128' and s.level='JR';
+
+11. select sname from student where level='SR' and major not like'% Engineering' and age>18;
+
+12. select name from class where name NOT IN(select name from student,class,enrolled where
+class.name=enrolled.cname and student.snum=enrolled.snum);
+
+13. SELECT F.fname FROM faculty F WHERE 5 > (SELECT COUNT(E.snum) FROM class C,
+enrolled E WHERE C.name = E.cname AND C.fid = F.fid);
+
+14. select faculty.fid,fname,count(name) as 'total number of teaching course' from faculty left join
+class on class.fid=faculty.fid group by faculty.fid,fname;
+
+15. select name,count(cname) from class left join enrolled on class.name=enrolled.cname group by
+name;
