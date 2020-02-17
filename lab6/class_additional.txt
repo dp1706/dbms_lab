@@ -1,0 +1,3 @@
+('Intoduction to Computing','TuF 8-9:30','R128',489221823, 5)
+('Programming in C','WThuF 8-9:30','C1',489221823, 3)
+('Programming in C Lab','T 9-1.00','CSELab2',489221823, 3)
