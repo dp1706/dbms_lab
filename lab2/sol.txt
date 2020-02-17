@@ -1,1 +1,22 @@
 //
+#solution of 2nd question 
+
+#queries are.
+
+1. select name from class where room='R128'; 
+
+2. select distinct fname,f.fid,deptid from class c,faculty f where f.fid=c.fid and room='R128';
+
+or
+
+2. select * from faculty where fid in(select fid from class where room ='R128');
+
+3. select fname from faculty where fid in(select fid from class where name='Data Structures');
+
+4.
+
+5.
+
+6.
+
+7.
