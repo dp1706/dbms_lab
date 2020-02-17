@@ -1,0 +1,27 @@
+#solution for 1st question------
+
+1. Create trigger del after delete on class 
+    for each row 
+    delete from enrolled where enrolled.cname=OLD.name;
+
+
+
+#solution for second question---------
+2.
+  delimiter //
+     create trigger  to_credit after update ON  enrolled 
+    for each row
+    begin 
+
+     IF  NEW.grade <>’F’ and NEW.grade is not NULL
+     THEN
+
+          update student
+          set tot_credit=tot_credit+(select credit from class where class.name=NEW.cname )
+          where student.snum=NEW.snum;
+     END IF;
+     end;  //
+ delimiter;
+   
+   
+   
