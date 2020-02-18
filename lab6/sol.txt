@@ -9,17 +9,24 @@
 #solution for second question---------
 2.
   delimiter //
-     create trigger  to_credit after update ON  enrolled 
+    create trigger  to_credit after update ON  enrolled 
     for each row
     begin 
-
-     IF  NEW.grade <>’F’ and NEW.grade is not NULL
+     IF  NEW.grade <>'F' and NEW.grade is not NULL and (OLD.grade='F' or OLD.grade is NULL)
      THEN
 
           update student
           set tot_credit=tot_credit+(select credit from class where class.name=NEW.cname )
           where student.snum=NEW.snum;
      END IF;
+
+     if (new.grade='F' or new.grade is null) and (old.grade<>'F' and old.grade is not null)
+    then
+    update student
+           set tot_credit=tot_credit-(select credit from class where      class.name=NEW.cname )
+          where student.snum=NEW.snum;
+     END IF;
+        
      end;  //
  delimiter;
    
