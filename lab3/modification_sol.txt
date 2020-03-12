@@ -1,9 +1,10 @@
 
 
 //
-
+// generalization of the query for having n level in the relation-----
 2. select level,avg(age) from student group by level having level<>'JR';
 
+// by mistake 9 th query  copied in query 5----
 5. select distinct snum, sname from enrolled natural join student  where cname in (SELECT cname from enrolled group by cname having count(*)>1);
 
  
