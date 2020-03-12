@@ -38,9 +38,16 @@ c.room='R128' and s.level='JR';
 
 12. select name from class where name NOT IN(select name from student,class,enrolled where
 class.name=enrolled.cname and student.snum=enrolled.snum);
-
+//for teacher name 
 13. SELECT F.fname FROM faculty F WHERE 5 > (SELECT COUNT(E.snum) FROM class C,
 enrolled E WHERE C.name = E.cname AND C.fid = F.fid);
+
+or 
+
+//for student name
+
+13. select distinct sname from student,class,faculty,enrolled where student.snum=enrolled.snum and class.name=enrolled.cname and faculty.fid=class.fid and fname in (SELECT F.fname FROM faculty F WHERE 5 > (SELECT COUNT(E.snum) FROM class C, enrolled E WHERE C.name = E.cname AND C.fid = F.fid));
+
 
 14. select faculty.fid,fname,count(name) as 'total number of teaching course' from faculty left join
 class on class.fid=faculty.fid group by faculty.fid,fname;
