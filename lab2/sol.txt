@@ -13,10 +13,14 @@ or
 
 3. select fname from faculty where fid in(select fid from class where name='Data Structures');
 
-4.
+4. select sname from student s,class c,enrolled e,faculty f where s.snum=e.snum and e.cname=c.name and f.fid=c.fid and f.fname='Ivana Teach';
 
-5.
 
-6.
+5. select sname from student s,class c,enrolled e,faculty f where s.snum=e.snum and e.cname=c.name and f.fid=c.fid and f.fname='Ivana Teach' and s.level='JR';
 
-7.
+
+6. select cname from enrolled natural join student where sname='Joseph Thompson';
+
+
+7. select sname from student where snum in(select snum from enrolled group by snum having count(*)>0);
+
