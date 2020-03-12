@@ -1,0 +1,6 @@
+
+
+//
+
+2. select level,avg(age) from student group by level having level<>'JR';
+ 
