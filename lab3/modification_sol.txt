@@ -4,11 +4,33 @@
 // generalization of the query for having n level in the relation-----
 2. select level,avg(age) from student group by level having level<>'JR';
 
+
 // by mistake 9 th query  copied in query 5----
 5. select distinct snum, sname from enrolled natural join student  where cname in (SELECT cname from enrolled group by cname having count(*)>1);
 
+
 // in branch of engineering
 10.  select major,count(*) from student group by major having major like '% Engineering' ;
+
+
+//put braces for or ------
+11.  select distinct f.fid,fname from faculty f, class c where c.fid=f.fid and (c.name='Data Structures' or c.name='Operating System Design');
+
+
+//alternative 
+12. select distinct fid,fname from faculty natural join class where deptid=20;
+
+
+//s.name instead of s.nam in the pdf
+13.  select s.snum,s.sname from student s where s.snum not in (select e.snum from enrolled e);
+
+//two such students 
+15.  select s.level,min(s.age) from(select * from student where age>17) as s group by s.level,age having count(*)>1 and age<=all(select age from student where age>17);
+
+
+
+
+
 
 
  
