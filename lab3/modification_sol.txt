@@ -7,4 +7,8 @@
 // by mistake 9 th query  copied in query 5----
 5. select distinct snum, sname from enrolled natural join student  where cname in (SELECT cname from enrolled group by cname having count(*)>1);
 
+// in branch of engineering
+10.  select major,count(*) from student group by major having major like '% Engineering' ;
+
+
  
